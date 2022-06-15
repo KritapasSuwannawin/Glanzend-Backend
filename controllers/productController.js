@@ -20,7 +20,7 @@ exports.getSetup = (req, res) => {
 const pg = require('../postgresql/postgresql');
 
 exports.getProduct = (req, res) => {
-  const { collection_id, category_id, color_id, min_price, max_price, offset, limit } = req.query;
+  const { collection_id, category_id, color_id, min_price, max_price, offset = 0, limit = 9 } = req.query;
 
   let where = '';
 
@@ -51,6 +51,26 @@ exports.getProduct = (req, res) => {
         status: 'success',
         data: {
           productArr: result.rows,
+        },
+      });
+    }
+  });
+};
+
+exports.getProductByID = (req, res) => {
+  const { id } = req.params;
+
+  pg.query(`SELECT * FROM product WHERE id = ${id}`, (err, result) => {
+    if (err) {
+      res.json({
+        status: 'error',
+        message: err.message,
+      });
+    } else {
+      res.json({
+        status: 'success',
+        data: {
+          product: result.rows[0],
         },
       });
     }
