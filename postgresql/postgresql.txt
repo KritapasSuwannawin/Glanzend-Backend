@@ -195,3 +195,23 @@ BEGIN
   END IF;
 END;
 $$
+
+--- login account ---
+
+CREATE OR REPLACE FUNCTION login_account(in_email character varying(255), in_password character varying(255))
+  RETURNS integer 
+  LANGUAGE plpgsql
+  AS
+$$
+BEGIN
+  IF EXISTS (SELECT id FROM account WHERE email = in_email AND password = MD5(in_password)) THEN
+    RETURN (SELECT id FROM account WHERE email = in_email AND password = MD5(in_password));
+  ELSE
+    IF NOT EXISTS (SELECT * FROM account WHERE email = in_email) THEN
+      RETURN -1;
+    ELSE
+      RETURN 0;
+    END IF;
+  END IF;
+END;
+$$
