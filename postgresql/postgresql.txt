@@ -1,60 +1,61 @@
 CREATE TABLE product (
   id SERIAL PRIMARY KEY,
-  name CHARACTER VARYING(255),
-  collection_id INTEGER,
-  category_id INTEGER,
-  color_id_arr INTEGER[],
-  size_id_arr INTEGER[],
-  price INTEGER,
-  is_in_stock BOOLEAN
+  name character varying(255),
+  collection_id integer,
+  category_id integer,
+  color_id_arr integer[],
+  size_id_arr integer[],
+  price integer,
+  is_in_stock boolean
 );
 
 CREATE TABLE collection (
   id SERIAL PRIMARY KEY,
-  name CHARACTER VARYING(255)
+  name character varying(255)
 );
 
 CREATE TABLE category (
   id SERIAL PRIMARY KEY,
-  name CHARACTER VARYING(255)
+  name character varying(255)
 );
 
 CREATE TABLE color (
   id SERIAL PRIMARY KEY,
-  code CHARACTER VARYING(255)
+  code character varying(255)
 );
 
 CREATE TABLE size (
   id SERIAL PRIMARY KEY,
-  name CHARACTER VARYING(255)
+  name character varying(255)
 );
 
 CREATE TABLE line_item (
   id SERIAL PRIMARY KEY,
-  product_id INTEGER,
-  quantity INTEGER,
-  size_id INTEGER,
-  is_checked BOOLEAN
+  product_id integer,
+  quantity integer,
+  size_id integer,
+  is_checked boolean
 );
 
 CREATE TABLE account (
-  first_name CHARACTER VARYING(255),
-  last_name CHARACTER VARYING(255),
-  address CHARACTER VARYING(255),
-  zip_code INTEGER,
-  city CHARACTER VARYING(255),
-  country CHARACTER VARYING(255),
-  phone_number INTEGER,
-  email CHARACTER VARYING(255),
-  password CHARACTER VARYING(255),
-  order_id_arr INTEGER[],
-  wishlist_line_item_id_arr INTEGER[],
-  cart_line_item_id_arr INTEGER[]
+  id SERIAL PRIMARY KEY,
+  first_name character varying(255),
+  last_name character varying(255),
+  address character varying(255),
+  zip_code character varying(255),
+  city character varying(255),
+  country character varying(255),
+  phone_number character varying(255),
+  email character varying(255),
+  password character varying(255),
+  order_id_arr integer[],
+  wishlist_line_item_id_arr integer[],
+  cart_line_item_id_arr integer[]
 );
 
 CREATE TABLE sale_order (
   id SERIAL PRIMARY KEY,
-  line_item_id_arr INTEGER[],
+  line_item_id_arr integer[],
   order_date DATE
 );
 
@@ -177,3 +178,20 @@ INSERT INTO account(first_name, last_name, address, zip_code, city, country, pho
 
 INSERT INTO sale_order(line_item_id_arr, order_date) VALUES
   ();
+
+--- register account ---
+
+CREATE OR REPLACE FUNCTION register_account(in_first_name character varying(255), in_last_name character varying(255), in_phone_number character varying(255), in_email character varying(255), in_password character varying(255))
+  RETURNS integer 
+  LANGUAGE plpgsql
+  AS
+$$
+BEGIN
+  IF EXISTS (SELECT * FROM account WHERE email = in_email) THEN
+    RETURN -1;
+  ELSE
+    INSERT INTO account(first_name, last_name, phone_number, email, password) VALUES (in_first_name, in_last_name, in_phone_number, in_email, MD5(in_password));
+    RETURN (SELECT id FROM account WHERE email = in_email);
+  END IF;
+END;
+$$
