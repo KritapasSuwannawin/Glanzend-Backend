@@ -19,6 +19,46 @@ exports.getSetup = (req, res) => {
 
 const pg = require('../postgresql/postgresql');
 
+exports.getAccount = (req, res) => {
+  const { id } = req.query;
+
+  pg.query(`SELECT * FROM account where id = ${id}`, (err, result) => {
+    if (err) {
+      res.json({
+        status: 'error',
+        message: err.message,
+      });
+    } else {
+      res.json({
+        status: 'success',
+        data: {
+          account: result.rows[0],
+        },
+      });
+    }
+  });
+};
+
+exports.updateAccount = (req, res) => {
+  const { accountID, firstName, lastName, address, zipCode, city, country, phoneNumber, email } = req.body;
+
+  pg.query(
+    `UPDATE account SET first_name = '${firstName}', last_name = '${lastName}', address = '${address}', zip_code = '${zipCode}', city = '${city}', country = '${country}', phone_number = '${phoneNumber}', email = '${email}' WHERE id = ${accountID}`,
+    (err, result) => {
+      if (err) {
+        res.json({
+          status: 'error',
+          message: err.message,
+        });
+      } else {
+        res.json({
+          status: 'success',
+        });
+      }
+    }
+  );
+};
+
 exports.registerAccount = (req, res) => {
   const { firstName, lastName, phoneNumber, email, password } = req.body;
 
