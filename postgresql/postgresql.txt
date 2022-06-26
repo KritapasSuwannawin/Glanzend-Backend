@@ -3,8 +3,8 @@ CREATE TABLE product (
   name character varying(255),
   collection_id integer,
   category_id integer,
-  color_id_arr integer[],
-  size_id_arr integer[],
+  color_id_arr integer[] DEFAULT array[]::integer[],
+  size_id_arr integer[] DEFAULT array[]::integer[],
   price integer,
   is_in_stock boolean
 );
@@ -21,7 +21,8 @@ CREATE TABLE category (
 
 CREATE TABLE color (
   id SERIAL PRIMARY KEY,
-  code character varying(255)
+  code character varying(255),
+  name character varying(255)
 );
 
 CREATE TABLE size (
@@ -34,7 +35,10 @@ CREATE TABLE line_item (
   product_id integer,
   quantity integer,
   size_id integer,
-  is_checked boolean
+  color_id integer,
+  type character varying(255),
+  is_checked boolean,
+  account_id integer
 );
 
 CREATE TABLE account (
@@ -48,14 +52,14 @@ CREATE TABLE account (
   phone_number character varying(255),
   email character varying(255),
   password character varying(255),
-  order_id_arr integer[],
-  wishlist_line_item_id_arr integer[],
-  cart_line_item_id_arr integer[]
+  order_id_arr integer[] DEFAULT array[]::integer[],
+  wishlist_line_item_id_arr integer[] DEFAULT array[]::integer[],
+  cart_line_item_id_arr integer[] DEFAULT array[]::integer[]
 );
 
 CREATE TABLE sale_order (
   id SERIAL PRIMARY KEY,
-  line_item_id_arr integer[],
+  line_item_id_arr integer[] DEFAULT array[]::integer[],
   order_date DATE
 );
 
@@ -149,21 +153,21 @@ INSERT INTO category(name) VALUES
   ('waist chains');
 
 INSERT INTO color(code) VALUES
-  ('#E52828'),
-  ('#5E5B5B'),
-  ('#FDC4DF'),
-  ('#F1DBBA'),
-  ('#C4A370'),
-  ('#A4B2CE'),
-  ('#A7D3A0'),
-  ('#C4C4C4'),
-  ('#F08080'),
-  ('#FF69B4'),
-  ('#FF7F50'),
-  ('#FFDAB9'),
-  ('#EE82EE'),
-  ('#9370DB'),
-  ('#98FB98');
+  ('#E52828', 'red'),
+  ('#5E5B5B', 'black'),
+  ('#FDC4DF', 'light pink'),
+  ('#F1DBBA', 'light brown'),
+  ('#C4A370', 'brown'),
+  ('#A4B2CE', 'blue'),
+  ('#A7D3A0', 'dark green'),
+  ('#C4C4C4', 'grey'),
+  ('#F08080', 'light red'),
+  ('#FF69B4', 'pink'),
+  ('#FF7F50', 'orange'),
+  ('#FFDAB9', 'nude'),
+  ('#EE82EE', 'purple'),
+  ('#9370DB', 'violet'),
+  ('#98FB98', 'green');
 
 INSERT INTO size(name) VALUES
   ('S'),
@@ -213,5 +217,71 @@ BEGIN
       RETURN 0;
     END IF;
   END IF;
+END;
+$$
+
+--- wishlist ---
+
+CREATE OR REPLACE FUNCTION insert_wishlist_line_item (in_account_id integer, in_product_id integer, in_quantity integer, in_size_id integer, in_color_id integer)
+  RETURNS integer 
+  LANGUAGE plpgsql
+  AS
+$$
+DECLARE
+  line_item_id integer;
+  return_value integer;
+BEGIN
+  FOREACH line_item_id IN ARRAY (SELECT wishlist_line_item_id_arr FROM account WHERE id = in_account_id)
+  LOOP
+    IF (SELECT product_id from line_item WHERE id = line_item_id) = in_product_id THEN
+      RETURN -1;
+    END IF;
+  END LOOP;
+  
+  FOREACH line_item_id IN ARRAY (SELECT cart_line_item_id_arr FROM account WHERE id = in_account_id)
+  LOOP
+    IF (SELECT product_id from line_item WHERE id = line_item_id) = in_product_id THEN
+      UPDATE account SET cart_line_item_id_arr = array_remove(cart_line_item_id_arr, line_item_id) WHERE id = in_account_id;
+    END IF;
+  END LOOP;
+
+  INSERT INTO line_item(product_id, quantity, size_id, color_id, type, is_checked, account_id) VALUES (in_product_id, in_quantity, in_size_id, in_color_id, 'wishlist', false, in_account_id);
+
+  return_value := (SELECT id FROM line_item WHERE product_id = in_product_id AND type = 'wishlist' AND account_id = in_account_id);
+
+  UPDATE account SET wishlist_line_item_id_arr = array_append(wishlist_line_item_id_arr, return_value) WHERE id = in_account_id;
+  RETURN return_value;
+END;
+$$
+
+--- line item ---
+
+CREATE OR REPLACE PROCEDURE delete_line_item(in_item_id integer, in_account_id integer, in_type character varying(255))
+  LANGUAGE plpgsql
+  AS 
+$$
+BEGIN
+  DELETE FROM line_item WHERE id = in_item_id;
+  IF in_type = 'wishlist' THEN
+    UPDATE account SET wishlist_line_item_id_arr = array_remove(wishlist_line_item_id_arr, in_item_id) WHERE id = in_account_id;
+  END IF;
+END;
+$$
+
+--- add wishlist to cart ---
+
+CREATE OR REPLACE PROCEDURE add_wishlist_to_cart (in_account_id integer, in_line_item_id_arr integer[])
+  LANGUAGE plpgsql
+  AS
+$$
+DECLARE
+  line_item_id integer;
+BEGIN
+  FOREACH line_item_id IN ARRAY in_line_item_id_arr
+  LOOP
+    UPDATE account SET wishlist_line_item_id_arr = array_remove(wishlist_line_item_id_arr, line_item_id) WHERE id = in_account_id;
+    UPDATE account SET cart_line_item_id_arr = array_append(cart_line_item_id_arr, line_item_id) WHERE id = in_account_id;
+    UPDATE line_item SET type = 'cart' WHERE id = line_item_id;
+  END LOOP;
 END;
 $$
