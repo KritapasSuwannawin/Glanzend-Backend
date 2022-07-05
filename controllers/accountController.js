@@ -191,6 +191,30 @@ exports.createLineItem = (req, res) => {
         }
       }
     });
+  } else if (type === 'cart') {
+    pg.query(`SELECT insert_cart_line_item(${accountID}, ${productID}, ${quantity}, ${sizeID}, ${colorID})`, (err, result) => {
+      if (err) {
+        res.json({
+          status: 'error',
+          message: err.message,
+        });
+      } else {
+        const returnValue = result.rows[0].insert_cart_line_item;
+        if (returnValue === -1) {
+          res.json({
+            status: 'fail',
+            message: 'This product is currently in the cart',
+          });
+        } else {
+          res.json({
+            status: 'success',
+            data: {
+              id: returnValue,
+            },
+          });
+        }
+      }
+    });
   } else {
     res.json({
       status: 'error',
