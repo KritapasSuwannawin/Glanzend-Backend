@@ -156,6 +156,19 @@ exports.updateColumn = (req, res) => {
         });
       }
     });
+  } else if (operationType === 'checkout') {
+    pg.query(`CALL checkout(${accountID}, ARRAY[${lineItemIDArr}])`, (err, result) => {
+      if (err) {
+        res.json({
+          status: 'error',
+          message: err.message,
+        });
+      } else {
+        res.json({
+          status: 'success',
+        });
+      }
+    });
   } else {
     res.json({
       status: 'error',

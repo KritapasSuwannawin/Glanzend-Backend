@@ -60,7 +60,8 @@ CREATE TABLE account (
 CREATE TABLE sale_order (
   id SERIAL PRIMARY KEY,
   line_item_id_arr integer[] DEFAULT array[]::integer[],
-  order_date DATE
+  order_date DATE,
+  account_id INTEGER
 );
 
 INSERT INTO product(name, collection_id, category_id, color_id_arr, size_id_arr, price, is_in_stock) VALUES
@@ -174,13 +175,13 @@ INSERT INTO size(name) VALUES
   ('M'),
   ('L');
 
-INSERT INTO line_item(product_id, quantity, size_id, is_checked) VALUES
+INSERT INTO line_item(product_id, quantity, size_id, is_checked, account_id) VALUES
   ();
 
 INSERT INTO account(first_name, last_name, address, zip_code, city, country, phone_number, email, password, order_id_arr, wishlist_line_item_id_arr, cart_line_item_id_arr) VALUES
   ();
 
-INSERT INTO sale_order(line_item_id_arr, order_date) VALUES
+INSERT INTO sale_order(line_item_id_arr, order_date, account_id) VALUES
   ();
 
 --- register account ---
@@ -321,5 +322,28 @@ BEGIN
 
   UPDATE account SET cart_line_item_id_arr = array_append(cart_line_item_id_arr, return_value) WHERE id = in_account_id;
   RETURN return_value;
+END;
+$$
+
+--- checkout ---
+
+CREATE OR REPLACE PROCEDURE checkout (in_account_id integer, in_line_item_id_arr integer[])
+  LANGUAGE plpgsql
+  AS
+$$
+DECLARE
+  line_item_id integer;
+BEGIN
+  FOREACH line_item_id IN ARRAY in_line_item_id_arr
+  LOOP
+    UPDATE account SET cart_line_item_id_arr = array_remove(cart_line_item_id_arr, line_item_id) WHERE id = in_account_id;
+    UPDATE line_item SET type = 'order' WHERE id = line_item_id;
+  END LOOP;
+
+  INSERT INTO sale_order(line_item_id_arr, order_date, account_id) VALUES (in_line_item_id_arr, CURRENT_DATE, in_account_id);
+
+  UPDATE account SET order_id_arr = array_append(
+    order_id_arr, (SELECT id FROM sale_order WHERE line_item_id_arr = in_line_item_id_arr AND order_date = CURRENT_DATE AND account_id = in_account_id)
+  ) WHERE id = in_account_id;
 END;
 $$
