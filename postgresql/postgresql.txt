@@ -65,81 +65,81 @@ CREATE TABLE sale_order (
 );
 
 INSERT INTO product(name, collection_id, category_id, color_id_arr, size_id_arr, price, is_in_stock) VALUES
-  ('brass earrings', 3, 2, ARRAY [6,9], ARRAY [1, 2, 3], 85, true),
-  ('titanium earrings', 2, 2, ARRAY [14,8], ARRAY [1, 2, 3], 95, true),
-  ('textile necklace', 2, 4, ARRAY [7,10], ARRAY [1, 2, 3], 120, false),
-  ('aluminium necklace', 2, 4, ARRAY [9,3,14,15], ARRAY [1, 2, 3], 125, true),
-  ('silver earrings', 1, 2, ARRAY [10,7,11], ARRAY [1, 2, 3], 55, false),
-  ('gold waist chain', 1, 5, ARRAY [8,4,9,12,10], ARRAY [1, 2, 3], 20, true),
-  ('silver bracelet', 1, 3, ARRAY [4,6], ARRAY [1, 2, 3], 95, false),
-  ('titanium waist chain', 2, 5, ARRAY [5,7,1,4], ARRAY [1, 2, 3], 115, true),
-  ('copper ring', 1, 1, ARRAY [14,9], ARRAY [1, 2, 3], 40, false),
-  ('brass bracelet', 3, 3, ARRAY [13,1], ARRAY [1, 2, 3], 60, false),
-  ('wood earrings', 3, 2, ARRAY [14,5,13,3,8], ARRAY [1, 2, 3], 110, false),
-  ('platinum earrings', 2, 2, ARRAY [1,12,8,13], ARRAY [1, 2, 3], 70, true),
-  ('brass waist chain', 3, 5, ARRAY [12,1,13,9], ARRAY [1, 2, 3], 110, true),
-  ('copper earrings', 1, 2, ARRAY [14,10,5], ARRAY [1, 2, 3], 125, false),
-  ('topaz necklace', 3, 4, ARRAY [14,1,8], ARRAY [1, 2, 3], 75, true),
-  ('zircon bracelet', 3, 3, ARRAY [13,14,3], ARRAY [1, 2, 3], 55, true),
-  ('platinum bracelet', 2, 3, ARRAY [10,12], ARRAY [1, 2, 3], 115, true),
-  ('aluminium waist chain', 2, 5, ARRAY [2,10], ARRAY [1, 2, 3], 65, true),
-  ('titanium ring', 2, 1, ARRAY [9,3], ARRAY [1, 2, 3], 20, false),
-  ('aluminium bracelet', 2, 3, ARRAY [10,15,1,11,9], ARRAY [1, 2, 3], 115, true),
-  ('textile ring', 2, 1, ARRAY [15,8,1,10,7], ARRAY [1, 2, 3], 120, true),
-  ('copper waist chain', 1, 5, ARRAY [7,2,13], ARRAY [1, 2, 3], 70, false),
-  ('glass bracelet', 3, 3, ARRAY [9,6,13,12,5], ARRAY [1, 2, 3], 85, true),
-  ('pearl earrings', 2, 2, ARRAY [6,3,4], ARRAY [1, 2, 3], 40, true),
-  ('diamond earrings', 1, 2, ARRAY [13,8,7,4,10], ARRAY [1, 2, 3], 100, true),
-  ('gold bracelet', 1, 3, ARRAY [12,2,14], ARRAY [1, 2, 3], 120, true),
-  ('wood necklace', 3, 4, ARRAY [13,6], ARRAY [1, 2, 3], 70, false),
-  ('metal ring', 1, 1, ARRAY [7,12], ARRAY [1, 2, 3], 35, true),
-  ('textile bracelet', 2, 3, ARRAY [4,1], ARRAY [1, 2, 3], 45, false),
-  ('brass necklace', 3, 4, ARRAY [13,10,15], ARRAY [1, 2, 3], 125, true),
-  ('copper bracelet', 1, 3, ARRAY [13,9,5,14], ARRAY [1, 2, 3], 125, true),
-  ('glass waist chain', 3, 5, ARRAY [4,5], ARRAY [1, 2, 3], 110, true),
-  ('pearl necklace', 2, 4, ARRAY [6,8,2,13,7], ARRAY [1, 2, 3], 45, true),
-  ('gold earrings', 1, 2, ARRAY [12,1,4], ARRAY [1, 2, 3], 100, false),
-  ('topaz waist chain', 3, 5, ARRAY [15,8,7,2], ARRAY [1, 2, 3], 105, true),
-  ('aluminium earrings', 2, 2, ARRAY [2,15,13], ARRAY [1, 2, 3], 45, true),
-  ('brass ring', 3, 1, ARRAY [11,12,6], ARRAY [1, 2, 3], 55, true),
-  ('pearl waist chain', 2, 5, ARRAY [12,7,2,3], ARRAY [1, 2, 3], 65, true),
-  ('platinum ring', 2, 1, ARRAY [2,10,9,3], ARRAY [1, 2, 3], 40, true),
-  ('metal waist chain', 1, 5, ARRAY [6,3], ARRAY [1, 2, 3], 50, true),
-  ('aluminium ring', 2, 1, ARRAY [15,8,9], ARRAY [1, 2, 3], 45, true),
-  ('zircon ring', 3, 1, ARRAY [2,13], ARRAY [1, 2, 3], 55, false),
-  ('diamond necklace', 1, 4, ARRAY [11,3,7,15], ARRAY [1, 2, 3], 70, false),
-  ('topaz earrings', 3, 2, ARRAY [8,11], ARRAY [1, 2, 3], 55, false),
-  ('zircon waist chain', 3, 5, ARRAY [2,4,6,10], ARRAY [1, 2, 3], 105, true),
-  ('zircon earrings', 3, 2, ARRAY [6,2], ARRAY [1, 2, 3], 60, true),
-  ('titanium bracelet', 2, 3, ARRAY [10,11,14,4], ARRAY [1, 2, 3], 40, true),
-  ('metal bracelet', 1, 3, ARRAY [9,7,10,5,12], ARRAY [1, 2, 3], 115, true),
-  ('textile waist chain', 2, 5, ARRAY [4,8,5,2,7], ARRAY [1, 2, 3], 100, true),
-  ('diamond waist chain', 1, 5, ARRAY [2,3,10], ARRAY [1, 2, 3], 65, false),
-  ('pearl ring', 2, 1, ARRAY [6,3,15], ARRAY [1, 2, 3], 80, true),
-  ('wood bracelet', 3, 3, ARRAY [11,3,2,10,13], ARRAY [1, 2, 3], 90, false),
-  ('silver ring', 1, 1, ARRAY [7,6], ARRAY [1, 2, 3], 35, true),
-  ('pearl bracelet', 2, 3, ARRAY [8,6,12,7], ARRAY [1, 2, 3], 25, true),
-  ('wood waist chain', 3, 5, ARRAY [6,11,8,15], ARRAY [1, 2, 3], 50, false),
-  ('glass earrings', 3, 2, ARRAY [15,8,12,2], ARRAY [1, 2, 3], 45, true),
-  ('glass ring', 3, 1, ARRAY [11,3,15,13], ARRAY [1, 2, 3], 85, true),
-  ('metal necklace', 1, 4, ARRAY [4,10,1,3,5], ARRAY [1, 2, 3], 110, false),
-  ('wood ring', 3, 1, ARRAY [14,3,4,1,15], ARRAY [1, 2, 3], 70, true),
-  ('platinum waist chain', 2, 5, ARRAY [14,5], ARRAY [1, 2, 3], 95, true),
-  ('titanium necklace', 2, 4, ARRAY [7,1], ARRAY [1, 2, 3], 95, true),
-  ('diamond ring', 1, 1, ARRAY [5,6], ARRAY [1, 2, 3], 50, true),
-  ('platinum necklace', 2, 4, ARRAY [3,9,5], ARRAY [1, 2, 3], 120, true),
-  ('gold necklace', 1, 4, ARRAY [2,3,15], ARRAY [1, 2, 3], 20, true),
-  ('copper necklace', 1, 4, ARRAY [10,15,1,8], ARRAY [1, 2, 3], 110, true),
-  ('topaz ring', 3, 1, ARRAY [2,8,4,3,1], ARRAY [1, 2, 3], 45, false),
-  ('silver waist chain', 1, 5, ARRAY [14,11,4,12,10], ARRAY [1, 2, 3], 75, false),
-  ('silver necklace', 1, 4, ARRAY [6,8], ARRAY [1, 2, 3], 50, false),
-  ('topaz bracelet', 3, 3, ARRAY [13,9,2,5], ARRAY [1, 2, 3], 95, true),
-  ('gold ring', 1, 1, ARRAY [9,8], ARRAY [1, 2, 3], 120, false),
-  ('diamond bracelet', 1, 3, ARRAY [13,2], ARRAY [1, 2, 3], 65, true),
-  ('metal earrings', 1, 2, ARRAY [6,5,7,11,8], ARRAY [1, 2, 3], 30, true),
-  ('zircon necklace', 3, 4, ARRAY [13,1,12,8], ARRAY [1, 2, 3], 120, true),
-  ('textile earrings', 2, 2, ARRAY [13,6,15,14], ARRAY [1, 2, 3], 20, false),
-  ('glass necklace', 3, 4, ARRAY [10,7,14,12,2], ARRAY [1, 2, 3], 125, true);
+  ('silver bracelet', 1, 3, ARRAY [10,1,14,9,4], ARRAY [1, 2, 3], 70, true),
+  ('gold ring', 1, 1, ARRAY [13,4,10,8], ARRAY [1, 2, 3], 20, true),
+  ('copper earrings', 1, 2, ARRAY [5,2,12], ARRAY [1, 2, 3], 80, true),
+  ('metal waist chain', 1, 5, ARRAY [8,13,6,4,7], ARRAY [1, 2, 3], 60, true),
+  ('diamond earrings', 1, 2, ARRAY [13,2,8,9,3], ARRAY [1, 2, 3], 60, true),
+  ('titanium waist chain', 2, 5, ARRAY [3,1,13], ARRAY [1, 2, 3], 20, true),
+  ('topaz necklace', 3, 4, ARRAY [10,1], ARRAY [1, 2, 3], 30, false),
+  ('diamond waist chain', 1, 5, ARRAY [7,12,8], ARRAY [1, 2, 3], 100, true),
+  ('zircon necklace', 3, 4, ARRAY [11,2], ARRAY [1, 2, 3], 80, true),
+  ('topaz waist chain', 3, 5, ARRAY [8,2,11], ARRAY [1, 2, 3], 45, true),
+  ('wood bracelet', 3, 3, ARRAY [15,11], ARRAY [1, 2, 3], 120, true),
+  ('aluminium necklace', 2, 4, ARRAY [13,14,7,4,2], ARRAY [1, 2, 3], 120, true),
+  ('diamond ring', 1, 1, ARRAY [12,8,13], ARRAY [1, 2, 3], 85, true),
+  ('brass earrings', 3, 2, ARRAY [15,12,4,2,10], ARRAY [1, 2, 3], 80, true),
+  ('titanium earrings', 2, 2, ARRAY [7,15,11,14,1], ARRAY [1, 2, 3], 95, false),
+  ('silver ring', 1, 1, ARRAY [12,14], ARRAY [1, 2, 3], 95, true),
+  ('silver necklace', 1, 4, ARRAY [1,11,5], ARRAY [1, 2, 3], 55, true),
+  ('platinum earrings', 2, 2, ARRAY [13,9,8], ARRAY [1, 2, 3], 50, true),
+  ('glass necklace', 3, 4, ARRAY [9,6,7,14], ARRAY [1, 2, 3], 45, true),
+  ('platinum waist chain', 2, 5, ARRAY [1,2,12,5,3], ARRAY [1, 2, 3], 125, true),
+  ('textile earrings', 2, 2, ARRAY [7,5,11,3], ARRAY [1, 2, 3], 30, true),
+  ('glass ring', 3, 1, ARRAY [3,12], ARRAY [1, 2, 3], 75, true),
+  ('topaz ring', 3, 1, ARRAY [7,5,12,8], ARRAY [1, 2, 3], 40, true),
+  ('zircon ring', 3, 1, ARRAY [9,4], ARRAY [1, 2, 3], 95, true),
+  ('wood earrings', 3, 2, ARRAY [14,9,12,1,13], ARRAY [1, 2, 3], 100, true),
+  ('silver earrings', 1, 2, ARRAY [4,10,15,5], ARRAY [1, 2, 3], 50, false),
+  ('copper necklace', 1, 4, ARRAY [2,14], ARRAY [1, 2, 3], 50, true),
+  ('platinum ring', 2, 1, ARRAY [12,5,4,14], ARRAY [1, 2, 3], 70, true),
+  ('metal ring', 1, 1, ARRAY [7,12], ARRAY [1, 2, 3], 40, true),
+  ('wood necklace', 3, 4, ARRAY [2,10,13], ARRAY [1, 2, 3], 120, true),
+  ('textile ring', 2, 1, ARRAY [3,5,11,7], ARRAY [1, 2, 3], 40, false),
+  ('textile necklace', 2, 4, ARRAY [9,12,15,5,10], ARRAY [1, 2, 3], 95, true),
+  ('wood waist chain', 3, 5, ARRAY [10,9,11], ARRAY [1, 2, 3], 30, true),
+  ('pearl ring', 2, 1, ARRAY [13,1,7,5], ARRAY [1, 2, 3], 55, true),
+  ('aluminium waist chain', 2, 5, ARRAY [2,8], ARRAY [1, 2, 3], 100, true),
+  ('titanium bracelet', 2, 3, ARRAY [2,8], ARRAY [1, 2, 3], 35, true),
+  ('metal bracelet', 1, 3, ARRAY [5,4], ARRAY [1, 2, 3], 70, true),
+  ('zircon waist chain', 3, 5, ARRAY [12,3], ARRAY [1, 2, 3], 100, true),
+  ('pearl necklace', 2, 4, ARRAY [14,11,4,10], ARRAY [1, 2, 3], 65, true),
+  ('textile waist chain', 2, 5, ARRAY [9,4,12,3], ARRAY [1, 2, 3], 60, true),
+  ('textile bracelet', 2, 3, ARRAY [11,15,2,4,7], ARRAY [1, 2, 3], 40, true),
+  ('gold bracelet', 1, 3, ARRAY [8,15,1,3], ARRAY [1, 2, 3], 100, true),
+  ('topaz earrings', 3, 2, ARRAY [2,10,5,3,14], ARRAY [1, 2, 3], 40, true),
+  ('aluminium bracelet', 2, 3, ARRAY [7,4,15,3], ARRAY [1, 2, 3], 100, true),
+  ('glass earrings', 3, 2, ARRAY [2,6,9], ARRAY [1, 2, 3], 70, true),
+  ('aluminium earrings', 2, 2, ARRAY [8,10,6], ARRAY [1, 2, 3], 100, true),
+  ('zircon earrings', 3, 2, ARRAY [12,11,14,6], ARRAY [1, 2, 3], 80, true),
+  ('brass bracelet', 3, 3, ARRAY [5,10,1,9], ARRAY [1, 2, 3], 90, false),
+  ('gold necklace', 1, 4, ARRAY [13,9,8,1], ARRAY [1, 2, 3], 70, true),
+  ('silver waist chain', 1, 5, ARRAY [13,12,3,14], ARRAY [1, 2, 3], 50, true),
+  ('platinum necklace', 2, 4, ARRAY [9,14], ARRAY [1, 2, 3], 20, true),
+  ('aluminium ring', 2, 1, ARRAY [4,7], ARRAY [1, 2, 3], 50, true),
+  ('metal necklace', 1, 4, ARRAY [14,5,6,7,1], ARRAY [1, 2, 3], 20, true),
+  ('copper ring', 1, 1, ARRAY [4,10,13,2,8], ARRAY [1, 2, 3], 125, true),
+  ('platinum bracelet', 2, 3, ARRAY [14,3,10,12], ARRAY [1, 2, 3], 90, true),
+  ('zircon bracelet', 3, 3, ARRAY [1,8], ARRAY [1, 2, 3], 35, false),
+  ('brass ring', 3, 1, ARRAY [1,9,3,6], ARRAY [1, 2, 3], 25, true),
+  ('titanium ring', 2, 1, ARRAY [9,12,1,15], ARRAY [1, 2, 3], 80, false),
+  ('topaz bracelet', 3, 3, ARRAY [5,10,6], ARRAY [1, 2, 3], 70, true),
+  ('pearl bracelet', 2, 3, ARRAY [11,14,5], ARRAY [1, 2, 3], 120, true),
+  ('brass waist chain', 3, 5, ARRAY [6,9,8], ARRAY [1, 2, 3], 45, true),
+  ('pearl earrings', 2, 2, ARRAY [12,7,1,10], ARRAY [1, 2, 3], 95, false),
+  ('brass necklace', 3, 4, ARRAY [11,2,9], ARRAY [1, 2, 3], 85, true),
+  ('titanium necklace', 2, 4, ARRAY [9,11], ARRAY [1, 2, 3], 95, false),
+  ('wood ring', 3, 1, ARRAY [3,1,15,8], ARRAY [1, 2, 3], 70, true),
+  ('glass waist chain', 3, 5, ARRAY [12,3,4,7], ARRAY [1, 2, 3], 110, false),
+  ('copper bracelet', 1, 3, ARRAY [14,8,6,13], ARRAY [1, 2, 3], 115, true),
+  ('diamond necklace', 1, 4, ARRAY [1,10,8,9], ARRAY [1, 2, 3], 70, true),
+  ('diamond bracelet', 1, 3, ARRAY [11,14,15], ARRAY [1, 2, 3], 65, true),
+  ('glass bracelet', 3, 3, ARRAY [13,8], ARRAY [1, 2, 3], 95, true),
+  ('metal earrings', 1, 2, ARRAY [5,3], ARRAY [1, 2, 3], 105, true),
+  ('pearl waist chain', 2, 5, ARRAY [8,1,12], ARRAY [1, 2, 3], 70, true),
+  ('copper waist chain', 1, 5, ARRAY [8,3], ARRAY [1, 2, 3], 40, true),
+  ('gold waist chain', 1, 5, ARRAY [9,7,6], ARRAY [1, 2, 3], 30, false),
+  ('gold earrings', 1, 2, ARRAY [3,9,12], ARRAY [1, 2, 3], 50, true);
 
 INSERT INTO collection(name) VALUES
   ('autumn'),
@@ -175,7 +175,7 @@ INSERT INTO size(name) VALUES
   ('M'),
   ('L');
 
-INSERT INTO line_item(product_id, quantity, size_id, is_checked, account_id) VALUES
+INSERT INTO line_item(product_id, quantity, size_id, color_id, type, is_checked, account_id) VALUES
   ();
 
 INSERT INTO account(first_name, last_name, address, zip_code, city, country, phone_number, email, password, order_id_arr, wishlist_line_item_id_arr, cart_line_item_id_arr) VALUES
@@ -344,6 +344,29 @@ BEGIN
 
   UPDATE account SET order_id_arr = array_append(
     order_id_arr, (SELECT id FROM sale_order WHERE line_item_id_arr = in_line_item_id_arr AND order_date = CURRENT_DATE AND account_id = in_account_id)
+  ) WHERE id = in_account_id;
+END;
+$$
+
+--- instant buy ---
+
+CREATE OR REPLACE PROCEDURE instant_buy (in_product_id integer, in_quantity integer, in_size_id integer, in_color_id integer, in_account_id integer)
+  LANGUAGE plpgsql
+  AS
+$$
+DECLARE
+  line_item_id integer;
+BEGIN
+  INSERT INTO line_item(product_id, quantity, size_id, color_id, type, is_checked, account_id) VALUES (in_product_id, in_quantity, in_size_id, in_color_id, 'instant buy', true, in_account_id);
+
+  line_item_id := (SELECT id FROM line_item WHERE type = 'instant buy' AND account_id = in_account_id);
+
+  UPDATE line_item SET type = 'order' WHERE id = line_item_id;
+
+  INSERT INTO sale_order(line_item_id_arr, order_date, account_id) VALUES (ARRAY[line_item_id], CURRENT_DATE, in_account_id);
+
+  UPDATE account SET order_id_arr = array_append(
+    order_id_arr, (SELECT id FROM sale_order WHERE line_item_id_arr = ARRAY[line_item_id] AND order_date = CURRENT_DATE AND account_id = in_account_id)
   ) WHERE id = in_account_id;
 END;
 $$

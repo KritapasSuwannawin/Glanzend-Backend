@@ -141,7 +141,7 @@ exports.getColumn = (req, res) => {
 };
 
 exports.updateColumn = (req, res) => {
-  const { accountID, lineItemIDArr, operationType } = req.body;
+  const { accountID, lineItemIDArr, operationType, lineItem } = req.body;
 
   if (operationType === 'wishlist to cart') {
     pg.query(`CALL add_wishlist_to_cart(${accountID}, ARRAY[${lineItemIDArr}])`, (err, result) => {
@@ -157,7 +157,16 @@ exports.updateColumn = (req, res) => {
       }
     });
   } else if (operationType === 'checkout') {
-    pg.query(`CALL checkout(${accountID}, ARRAY[${lineItemIDArr}])`, (err, result) => {
+    let query = '';
+
+    if (lineItemIDArr[0]) {
+      query = `CALL checkout(${accountID}, ARRAY[${lineItemIDArr}])`;
+    } else {
+      const { product_id, quantity, size_id, color_id, account_id } = lineItem;
+      query = `CALL instant_buy(${product_id}, ${quantity}, ${size_id}, ${color_id}, ${account_id})`;
+    }
+
+    pg.query(query, (err, result) => {
       if (err) {
         res.json({
           status: 'error',
