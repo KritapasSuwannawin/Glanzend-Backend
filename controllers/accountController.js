@@ -18,6 +18,7 @@ exports.getSetup = (req, res) => {
 */
 
 const pg = require('../postgresql/postgresql');
+const cryptoJS = require('crypto-js');
 
 exports.getAccount = (req, res) => {
   const { id } = req.query;
@@ -60,7 +61,9 @@ exports.updateAccount = (req, res) => {
 };
 
 exports.registerAccount = (req, res) => {
-  const { firstName, lastName, phoneNumber, email, password } = req.body;
+  const { firstName, lastName, phoneNumber, email, encryptedPassword } = req.body;
+
+  const password = cryptoJS.AES.decrypt(encryptedPassword, process.env.private_key).toString(cryptoJS.enc.Utf8);
 
   pg.query(`SELECT register_account('${firstName}', '${lastName}', '${phoneNumber}', '${email}', '${password}')`, (err, result) => {
     if (err) {
@@ -88,7 +91,9 @@ exports.registerAccount = (req, res) => {
 };
 
 exports.loginAccount = (req, res) => {
-  const { email, password } = req.body;
+  const { email, encryptedPassword } = req.body;
+
+  const password = cryptoJS.AES.decrypt(encryptedPassword, process.env.private_key).toString(cryptoJS.enc.Utf8);
 
   pg.query(`SELECT login_account('${email}', '${password}')`, (err, result) => {
     if (err) {
