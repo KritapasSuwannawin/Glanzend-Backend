@@ -146,32 +146,10 @@ exports.getColumn = (req, res) => {
 };
 
 exports.updateColumn = (req, res) => {
-  const { accountID, lineItemIDArr, operationType, lineItem } = req.body;
+  const { accountID, lineItemIDArr, operationType } = req.body;
 
   if (operationType === 'wishlist to cart') {
     pg.query(`CALL add_wishlist_to_cart(${accountID}, ARRAY[${lineItemIDArr}])`, (err, result) => {
-      if (err) {
-        res.json({
-          status: 'error',
-          message: err.message,
-        });
-      } else {
-        res.json({
-          status: 'success',
-        });
-      }
-    });
-  } else if (operationType === 'checkout') {
-    let query = '';
-
-    if (lineItemIDArr[0]) {
-      query = `CALL checkout(${accountID}, ARRAY[${lineItemIDArr}])`;
-    } else {
-      const { product_id, quantity, size_id, color_id, account_id } = lineItem;
-      query = `CALL instant_buy(${product_id}, ${quantity}, ${size_id}, ${color_id}, ${account_id})`;
-    }
-
-    pg.query(query, (err, result) => {
       if (err) {
         res.json({
           status: 'error',
@@ -320,4 +298,56 @@ exports.deleteLineItem = (req, res) => {
       });
     }
   });
+};
+
+exports.createSaleOrder = (req, res) => {
+  const { accountID, lineItemArr, shippingInfo } = req.body;
+
+  const { firstName, lastName, address, zipCode, city, country, phoneNumber, email } = shippingInfo;
+  const lineItemIDArr = lineItemArr.map((item) => item.id);
+
+  let query = '';
+
+  if (lineItemIDArr[0]) {
+    query = `CALL checkout(${accountID}, ARRAY[${lineItemIDArr}], '${firstName}', '${lastName}', '${address}', '${zipCode}', '${city}', '${country}', '${phoneNumber}', '${email}')`;
+  } else {
+    const { product_id, quantity, size_id, color_id, account_id } = lineItemArr[0];
+    query = `CALL instant_buy(${product_id}, ${quantity}, ${size_id}, ${color_id}, ${account_id}, '${firstName}', '${lastName}', '${address}', '${zipCode}', '${city}', '${country}', '${phoneNumber}', '${email}')`;
+  }
+
+  pg.query(query, (err, result) => {
+    if (err) {
+      res.json({
+        status: 'error',
+        message: err.message,
+      });
+    } else {
+      res.json({
+        status: 'success',
+      });
+    }
+  });
+};
+
+exports.getSaleOrder = (req, res) => {
+  const { order_id_arr: orderIDArr, account_id: accountID } = req.query;
+
+  pg.query(
+    `SELECT * FROM sale_order WHERE id = ANY(ARRAY[${orderIDArr}]) AND account_id = ${accountID} ORDER BY id DESC`,
+    (err, result) => {
+      if (err) {
+        res.json({
+          status: 'error',
+          message: err.message,
+        });
+      } else {
+        res.json({
+          status: 'success',
+          data: {
+            orderInfo: result.rows,
+          },
+        });
+      }
+    }
+  );
 };

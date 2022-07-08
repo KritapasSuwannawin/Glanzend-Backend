@@ -60,8 +60,16 @@ CREATE TABLE account (
 CREATE TABLE sale_order (
   id SERIAL PRIMARY KEY,
   line_item_id_arr integer[] DEFAULT array[]::integer[],
-  order_date DATE,
-  account_id INTEGER
+  order_date date,
+  account_id integer,
+  first_name character varying(255),
+  last_name character varying(255),
+  address character varying(255),
+  zip_code character varying(255),
+  city character varying(255),
+  country character varying(255),
+  phone_number character varying(255),
+  email character varying(255)
 );
 
 INSERT INTO product(name, collection_id, category_id, color_id_arr, size_id_arr, price, is_in_stock) VALUES
@@ -181,7 +189,7 @@ INSERT INTO line_item(product_id, quantity, size_id, color_id, type, is_checked,
 INSERT INTO account(first_name, last_name, address, zip_code, city, country, phone_number, email, password, order_id_arr, wishlist_line_item_id_arr, cart_line_item_id_arr) VALUES
   ();
 
-INSERT INTO sale_order(line_item_id_arr, order_date, account_id) VALUES
+INSERT INTO sale_order(line_item_id_arr, order_date, account_id, first_name, last_name, address, zip_code, city, country, phone_number, email) VALUES
   ();
 
 --- register account ---
@@ -327,7 +335,7 @@ $$
 
 --- checkout ---
 
-CREATE OR REPLACE PROCEDURE checkout (in_account_id integer, in_line_item_id_arr integer[])
+CREATE OR REPLACE PROCEDURE checkout (in_account_id integer, in_line_item_id_arr integer[], in_first_name character varying(255), in_last_name character varying(255), in_address character varying(255), in_zip_code character varying(255), in_city character varying(255), in_country character varying(255), in_phone_number character varying(255), in_email character varying(255))
   LANGUAGE plpgsql
   AS
 $$
@@ -340,17 +348,17 @@ BEGIN
     UPDATE line_item SET type = 'order' WHERE id = line_item_id;
   END LOOP;
 
-  INSERT INTO sale_order(line_item_id_arr, order_date, account_id) VALUES (in_line_item_id_arr, CURRENT_DATE, in_account_id);
+  INSERT INTO sale_order(line_item_id_arr, order_date, account_id, first_name, last_name, address, zip_code, city, country, phone_number, email) VALUES (in_line_item_id_arr, CURRENT_DATE, in_account_id, in_first_name, in_last_name, in_address, in_zip_code, in_city, in_country, in_phone_number, in_email);
 
   UPDATE account SET order_id_arr = array_append(
-    order_id_arr, (SELECT id FROM sale_order WHERE line_item_id_arr = in_line_item_id_arr AND order_date = CURRENT_DATE AND account_id = in_account_id)
+    order_id_arr, (SELECT id FROM sale_order WHERE line_item_id_arr = in_line_item_id_arr)
   ) WHERE id = in_account_id;
 END;
 $$
 
 --- instant buy ---
 
-CREATE OR REPLACE PROCEDURE instant_buy (in_product_id integer, in_quantity integer, in_size_id integer, in_color_id integer, in_account_id integer)
+CREATE OR REPLACE PROCEDURE instant_buy (in_product_id integer, in_quantity integer, in_size_id integer, in_color_id integer, in_account_id integer, in_first_name character varying(255), in_last_name character varying(255), in_address character varying(255), in_zip_code character varying(255), in_city character varying(255), in_country character varying(255), in_phone_number character varying(255), in_email character varying(255))
   LANGUAGE plpgsql
   AS
 $$
@@ -363,10 +371,10 @@ BEGIN
 
   UPDATE line_item SET type = 'order' WHERE id = line_item_id;
 
-  INSERT INTO sale_order(line_item_id_arr, order_date, account_id) VALUES (ARRAY[line_item_id], CURRENT_DATE, in_account_id);
+  INSERT INTO sale_order(line_item_id_arr, order_date, account_id, first_name, last_name, address, zip_code, city, country, phone_number, email) VALUES (ARRAY[line_item_id], CURRENT_DATE, in_account_id, in_first_name, in_last_name, in_address, in_zip_code, in_city, in_country, in_phone_number, in_email);
 
   UPDATE account SET order_id_arr = array_append(
-    order_id_arr, (SELECT id FROM sale_order WHERE line_item_id_arr = ARRAY[line_item_id] AND order_date = CURRENT_DATE AND account_id = in_account_id)
+    order_id_arr, (SELECT id FROM sale_order WHERE line_item_id_arr = ARRAY[line_item_id])
   ) WHERE id = in_account_id;
 END;
 $$
