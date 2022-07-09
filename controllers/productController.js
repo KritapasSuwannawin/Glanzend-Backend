@@ -20,7 +20,7 @@ exports.getSetup = (req, res) => {
 const pg = require('../postgresql/postgresql');
 
 exports.getProduct = (req, res) => {
-  const { collection_id, category_id, color_id, min_price, max_price, offset = 0, limit = 9 } = req.query;
+  const { collection_id, category_id, color_id, min_price, max_price, search, offset = 0, limit = 9 } = req.query;
 
   let where = '';
 
@@ -38,6 +38,10 @@ exports.getProduct = (req, res) => {
 
   if (min_price && max_price) {
     where += `${where.length > 0 ? ' AND' : 'WHERE'} price BETWEEN ${min_price} AND ${max_price}`;
+  }
+
+  if (search) {
+    where += `${where.length > 0 ? ' AND' : 'WHERE'} name LIKE '%${search.split('_').join(' ')}%'`;
   }
 
   pg.query(`SELECT * FROM product ${where} ORDER BY id OFFSET ${offset} LIMIT ${limit}`, (err, result) => {
