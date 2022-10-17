@@ -17,7 +17,7 @@ exports.getSetup = (req, res) => {
 
 */
 
-const pg = require('../postgresql/postgresql');
+const pg = require('../postgres/postgres');
 const cryptoJS = require('crypto-js');
 
 exports.getAccount = (req, res) => {

@@ -17,7 +17,7 @@ exports.getSetup = (req, res) => {
 
 */
 
-const pg = require('../postgresql/postgresql');
+const pg = require('../postgres/postgres');
 
 exports.getHomeStartup = (req, res) => {
   const categoryPromise = new Promise((resolve, reject) => {

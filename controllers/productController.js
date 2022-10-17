@@ -17,7 +17,7 @@ exports.getSetup = (req, res) => {
 
 */
 
-const pg = require('../postgresql/postgresql');
+const pg = require('../postgres/postgres');
 
 exports.getProduct = (req, res) => {
   const { collection_id, category_id, color_id, min_price, max_price, search, offset = 0, limit = 9 } = req.query;

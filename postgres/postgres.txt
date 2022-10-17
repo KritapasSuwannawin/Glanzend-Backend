@@ -161,7 +161,7 @@ INSERT INTO category(name) VALUES
   ('necklaces'),
   ('waist chains');
 
-INSERT INTO color(code) VALUES
+INSERT INTO color(code, name) VALUES
   ('#E52828', 'red'),
   ('#5E5B5B', 'black'),
   ('#FDC4DF', 'light pink'),
