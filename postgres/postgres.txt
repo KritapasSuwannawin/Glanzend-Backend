@@ -378,3 +378,255 @@ BEGIN
   ) WHERE id = in_account_id;
 END;
 $$
+
+--- insert more products ---
+
+INSERT INTO product(name, collection_id, category_id, color_id_arr, size_id_arr, price, is_in_stock) VALUES
+  ('pearl ring', 2, 1, ARRAY [14,7,12,5], ARRAY [1, 2, 3], 110, true),
+  ('titanium bracelet', 2, 3, ARRAY [6,7], ARRAY [1, 2, 3], 105, true),
+  ('topaz ring', 3, 1, ARRAY [2,7,1,10,8], ARRAY [1, 2, 3], 110, true),
+  ('platinum bracelet', 2, 3, ARRAY [5,3,12], ARRAY [1, 2, 3], 55, true),
+  ('zircon ring', 3, 1, ARRAY [14,13,11], ARRAY [1, 2, 3], 80, true),
+  ('brass waist chain', 3, 5, ARRAY [1,2,4], ARRAY [1, 2, 3], 25, true),
+  ('zircon bracelet', 3, 3, ARRAY [13,6,15,8], ARRAY [1, 2, 3], 75, true),
+  ('diamond necklace', 1, 4, ARRAY [8,3,4,7], ARRAY [1, 2, 3], 110, false),
+  ('wood earrings', 3, 2, ARRAY [2,1,3,5], ARRAY [1, 2, 3], 110, true),
+  ('glass necklace', 3, 4, ARRAY [10,9,2], ARRAY [1, 2, 3], 115, false),
+  ('platinum waist chain', 2, 5, ARRAY [2,12,11], ARRAY [1, 2, 3], 105, true),
+  ('pearl bracelet', 2, 3, ARRAY [13,2], ARRAY [1, 2, 3], 85, true),
+  ('silver ring', 1, 1, ARRAY [5,10,12,3,9], ARRAY [1, 2, 3], 120, false),
+  ('glass waist chain', 3, 5, ARRAY [8,12,9,4,1], ARRAY [1, 2, 3], 85, true),
+  ('textile waist chain', 2, 5, ARRAY [8,1,15,14,7], ARRAY [1, 2, 3], 70, true),
+  ('silver bracelet', 1, 3, ARRAY [11,5], ARRAY [1, 2, 3], 80, true),
+  ('titanium ring', 2, 1, ARRAY [10,11,1,2,15], ARRAY [1, 2, 3], 40, true),
+  ('gold earrings', 1, 2, ARRAY [10,5], ARRAY [1, 2, 3], 120, true),
+  ('glass ring', 3, 1, ARRAY [11,13], ARRAY [1, 2, 3], 30, true),
+  ('silver waist chain', 1, 5, ARRAY [15,6,13,5], ARRAY [1, 2, 3], 20, true),
+  ('textile ring', 2, 1, ARRAY [6,8], ARRAY [1, 2, 3], 115, true),
+  ('diamond waist chain', 1, 5, ARRAY [9,8,15], ARRAY [1, 2, 3], 55, true),
+  ('platinum necklace', 2, 4, ARRAY [7,13,15,2], ARRAY [1, 2, 3], 110, true),
+  ('wood waist chain', 3, 5, ARRAY [2,14], ARRAY [1, 2, 3], 25, true),
+  ('diamond ring', 1, 1, ARRAY [10,14], ARRAY [1, 2, 3], 35, false),
+  ('platinum earrings', 2, 2, ARRAY [12,11], ARRAY [1, 2, 3], 120, true),
+  ('aluminium ring', 2, 1, ARRAY [11,6,8,13,4], ARRAY [1, 2, 3], 45, false),
+  ('aluminium earrings', 2, 2, ARRAY [3,11,12,6,14], ARRAY [1, 2, 3], 90, true),
+  ('titanium earrings', 2, 2, ARRAY [13,8,10,6], ARRAY [1, 2, 3], 90, true),
+  ('textile earrings', 2, 2, ARRAY [7,4,11,3], ARRAY [1, 2, 3], 30, true),
+  ('silver necklace', 1, 4, ARRAY [5,15,7], ARRAY [1, 2, 3], 100, true),
+  ('aluminium waist chain', 2, 5, ARRAY [7,2], ARRAY [1, 2, 3], 30, true),
+  ('copper ring', 1, 1, ARRAY [10,7,11], ARRAY [1, 2, 3], 25, true),
+  ('aluminium necklace', 2, 4, ARRAY [12,15], ARRAY [1, 2, 3], 55, true),
+  ('metal ring', 1, 1, ARRAY [3,4,12], ARRAY [1, 2, 3], 120, true),
+  ('glass earrings', 3, 2, ARRAY [4,13,14,10], ARRAY [1, 2, 3], 20, true),
+  ('glass bracelet', 3, 3, ARRAY [13,14,8,3], ARRAY [1, 2, 3], 35, false),
+  ('copper necklace', 1, 4, ARRAY [15,10], ARRAY [1, 2, 3], 75, true),
+  ('pearl necklace', 2, 4, ARRAY [15,9,10,3], ARRAY [1, 2, 3], 90, true),
+  ('pearl earrings', 2, 2, ARRAY [8,15,9,6,7], ARRAY [1, 2, 3], 110, true),
+  ('metal earrings', 1, 2, ARRAY [4,12,2], ARRAY [1, 2, 3], 20, true),
+  ('metal waist chain', 1, 5, ARRAY [11,10,6], ARRAY [1, 2, 3], 85, true),
+  ('wood necklace', 3, 4, ARRAY [11,5], ARRAY [1, 2, 3], 40, true),
+  ('gold bracelet', 1, 3, ARRAY [13,2,4,1], ARRAY [1, 2, 3], 25, true),
+  ('brass bracelet', 3, 3, ARRAY [4,1,9], ARRAY [1, 2, 3], 90, true),
+  ('textile bracelet', 2, 3, ARRAY [14,11,8,7], ARRAY [1, 2, 3], 45, true),
+  ('zircon earrings', 3, 2, ARRAY [2,15,6], ARRAY [1, 2, 3], 95, false),
+  ('copper waist chain', 1, 5, ARRAY [3,8,1,2], ARRAY [1, 2, 3], 65, false),
+  ('copper bracelet', 1, 3, ARRAY [15,6,9,13,12], ARRAY [1, 2, 3], 85, true),
+  ('aluminium bracelet', 2, 3, ARRAY [2,12,4,15,10], ARRAY [1, 2, 3], 105, true),
+  ('topaz waist chain', 3, 5, ARRAY [13,9], ARRAY [1, 2, 3], 80, true),
+  ('diamond bracelet', 1, 3, ARRAY [15,11,5], ARRAY [1, 2, 3], 55, true),
+  ('textile necklace', 2, 4, ARRAY [2,15,12,4], ARRAY [1, 2, 3], 105, true),
+  ('wood ring', 3, 1, ARRAY [5,10,6,14], ARRAY [1, 2, 3], 100, true),
+  ('titanium waist chain', 2, 5, ARRAY [8,14], ARRAY [1, 2, 3], 110, false),
+  ('topaz bracelet', 3, 3, ARRAY [9,2], ARRAY [1, 2, 3], 50, true),
+  ('zircon necklace', 3, 4, ARRAY [2,1], ARRAY [1, 2, 3], 35, true),
+  ('gold waist chain', 1, 5, ARRAY [6,12,11,14,3], ARRAY [1, 2, 3], 80, true),
+  ('wood bracelet', 3, 3, ARRAY [7,5,9,2], ARRAY [1, 2, 3], 85, true),
+  ('gold ring', 1, 1, ARRAY [4,10], ARRAY [1, 2, 3], 40, true),
+  ('topaz earrings', 3, 2, ARRAY [12,7,11,10,2], ARRAY [1, 2, 3], 75, true),
+  ('diamond earrings', 1, 2, ARRAY [14,2,9], ARRAY [1, 2, 3], 85, true),
+  ('titanium necklace', 2, 4, ARRAY [5,12,15,14,3], ARRAY [1, 2, 3], 40, true),
+  ('silver earrings', 1, 2, ARRAY [1,8,7,15,4], ARRAY [1, 2, 3], 115, true),
+  ('topaz necklace', 3, 4, ARRAY [12,2,8,4], ARRAY [1, 2, 3], 115, true),
+  ('brass earrings', 3, 2, ARRAY [9,5,3], ARRAY [1, 2, 3], 60, true),
+  ('metal bracelet', 1, 3, ARRAY [2,6,7,5,4], ARRAY [1, 2, 3], 45, true),
+  ('zircon waist chain', 3, 5, ARRAY [3,4,8], ARRAY [1, 2, 3], 20, false),
+  ('pearl waist chain', 2, 5, ARRAY [14,7], ARRAY [1, 2, 3], 25, true),
+  ('brass ring', 3, 1, ARRAY [13,14,4,3], ARRAY [1, 2, 3], 125, true),
+  ('copper earrings', 1, 2, ARRAY [11,9], ARRAY [1, 2, 3], 35, false),
+  ('brass necklace', 3, 4, ARRAY [15,12,14,10], ARRAY [1, 2, 3], 45, true),
+  ('metal necklace', 1, 4, ARRAY [11,15], ARRAY [1, 2, 3], 80, true),
+  ('gold necklace', 1, 4, ARRAY [7,8], ARRAY [1, 2, 3], 40, true),
+  ('platinum ring', 2, 1, ARRAY [1,5,10,2], ARRAY [1, 2, 3], 45, true);
+
+--- product image ---
+
+ALTER TABLE product ADD COLUMN img_url character varying(255);
+
+UPDATE product SET img_url = 'https://images.pexels.com/photos/859895/pexels-photo-859895.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 73;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/13292426/pexels-photo-13292426.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 74;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/14949203/pexels-photo-14949203.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 7;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/1721937/pexels-photo-1721937.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 3;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/8105125/pexels-photo-8105125.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 38;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/3774935/pexels-photo-3774935.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 87;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/14509686/pexels-photo-14509686.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 108;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6431179/pexels-photo-6431179.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 81;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/7514841/pexels-photo-7514841.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 30;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/257037/pexels-photo-257037.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 67;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/13204122/pexels-photo-13204122.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 27;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6775289/pexels-photo-6775289.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 107;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/14723684/pexels-photo-14723684.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 39;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/13204122/pexels-photo-13204122.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 12;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/11449103/pexels-photo-11449103.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 48;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/9428776/pexels-photo-9428776.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 32;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/13155694/pexels-photo-13155694.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 37;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/10983778/pexels-photo-10983778.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 46;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/4241706/pexels-photo-4241706.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 78;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/3536991/pexels-photo-3536991.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 55;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/859895/pexels-photo-859895.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 6;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6046164/pexels-photo-6046164.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 53;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/12992073/pexels-photo-12992073.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 15;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/13867816/pexels-photo-13867816.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 68;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6624862/pexels-photo-6624862.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 90;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/10658531/pexels-photo-10658531.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 95;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/15068341/pexels-photo-15068341.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 58;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/11449103/pexels-photo-11449103.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 82;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/1191531/pexels-photo-1191531.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 79;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6775289/pexels-photo-6775289.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 61;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/13204122/pexels-photo-13204122.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 83;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/8084021/pexels-photo-8084021.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 59;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6758030/pexels-photo-6758030.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 77;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6354280/pexels-photo-6354280.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 31;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/2735970/pexels-photo-2735970.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 43;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6883793/pexels-photo-6883793.png?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 76;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/10950873/pexels-photo-10950873.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 50;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/859895/pexels-photo-859895.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 72;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/7955454/pexels-photo-7955454.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 150;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/15068341/pexels-photo-15068341.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 102;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/13292426/pexels-photo-13292426.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 133;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/13595298/pexels-photo-13595298.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 5;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/14778939/pexels-photo-14778939.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 24;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/14949203/pexels-photo-14949203.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 64;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6046160/pexels-photo-6046160.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 71;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/3678501/pexels-photo-3678501.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 75;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/13038032/pexels-photo-13038032.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 118;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/8100399/pexels-photo-8100399.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 11;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6979584/pexels-photo-6979584.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 60;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6431183/pexels-photo-6431183.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 10;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/13998586/pexels-photo-13998586.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 21;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/1457801/pexels-photo-1457801.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 2;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/2849743/pexels-photo-2849743.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 103;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/2735981/pexels-photo-2735981.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 100;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/10983778/pexels-photo-10983778.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 14;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6431177/pexels-photo-6431177.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 149;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/8105116/pexels-photo-8105116.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 126;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/8891952/pexels-photo-8891952.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 139;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6248765/pexels-photo-6248765.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 88;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/7955454/pexels-photo-7955454.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 57;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/5200459/pexels-photo-5200459.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 110;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/9432650/pexels-photo-9432650.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 84;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6263070/pexels-photo-6263070.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 1;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6046160/pexels-photo-6046160.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 116;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/9430435/pexels-photo-9430435.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 26;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/4711886/pexels-photo-4711886.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 16;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/1232931/pexels-photo-1232931.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 135;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/10828767/pexels-photo-10828767.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 42;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/949590/pexels-photo-949590.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 47;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/14523926/pexels-photo-14523926.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 63;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/4019463/pexels-photo-4019463.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 29;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/4467906/pexels-photo-4467906.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 96;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6153880/pexels-photo-6153880.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 115;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/5200459/pexels-photo-5200459.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 4;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/2849743/pexels-photo-2849743.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 146;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/13204122/pexels-photo-13204122.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 147;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/13038032/pexels-photo-13038032.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 132;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/9933047/pexels-photo-9933047.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 45;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/14231407/pexels-photo-14231407.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 140;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/12946414/pexels-photo-12946414.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 113;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6496689/pexels-photo-6496689.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 33;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/7514840/pexels-photo-7514840.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 109;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/10983778/pexels-photo-10983778.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 18;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6263151/pexels-photo-6263151.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 65;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/15171470/pexels-photo-15171470.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 23;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6263113/pexels-photo-6263113.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 54;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/11449103/pexels-photo-11449103.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 36;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/1697220/pexels-photo-1697220.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 91;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/14446666/pexels-photo-14446666.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 92;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/888899/pexels-photo-888899.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 28;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/204993/pexels-photo-204993.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 129;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/15171470/pexels-photo-15171470.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 52;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/13595298/pexels-photo-13595298.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 8;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/1191531/pexels-photo-1191531.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 120;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6431183/pexels-photo-6431183.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 49;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/12197267/pexels-photo-12197267.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 98;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/12992073/pexels-photo-12992073.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 101;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6764425/pexels-photo-6764425.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 34;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/9428779/pexels-photo-9428779.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 62;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/5794559/pexels-photo-5794559.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 19;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/2740658/pexels-photo-2740658.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 93;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/9430462/pexels-photo-9430462.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 17;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/4974507/pexels-photo-4974507.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 94;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/1721937/pexels-photo-1721937.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 104;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/7310137/pexels-photo-7310137.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 111;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/13595301/pexels-photo-13595301.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 105;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/14509677/pexels-photo-14509677.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 97;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6431179/pexels-photo-6431179.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 20;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/9987804/pexels-photo-9987804.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 70;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/9428776/pexels-photo-9428776.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 40;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/7523263/pexels-photo-7523263.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 66;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/8084021/pexels-photo-8084021.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 125;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/1395306/pexels-photo-1395306.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 131;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6154068/pexels-photo-6154068.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 85;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/14949203/pexels-photo-14949203.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 51;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/15049907/pexels-photo-15049907.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 86;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/9987804/pexels-photo-9987804.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 112;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/5359322/pexels-photo-5359322.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 56;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/634242/pexels-photo-634242.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 119;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/12585700/pexels-photo-12585700.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 137;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/5732687/pexels-photo-5732687.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 22;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/15351782/pexels-photo-15351782.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 80;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/227574/pexels-photo-227574.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 99;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/4544816/pexels-photo-4544816.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 25;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/5361139/pexels-photo-5361139.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 121;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6263113/pexels-photo-6263113.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 145;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/8084021/pexels-photo-8084021.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 44;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/13155694/pexels-photo-13155694.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 148;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/4544816/pexels-photo-4544816.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 122;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/11449103/pexels-photo-11449103.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 124;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/13037597/pexels-photo-13037597.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 141;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/7251792/pexels-photo-7251792.png?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 41;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6747302/pexels-photo-6747302.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 35;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/9482097/pexels-photo-9482097.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 128;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/859895/pexels-photo-859895.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 89;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/8105125/pexels-photo-8105125.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 123;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/9431868/pexels-photo-9431868.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 106;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/12992060/pexels-photo-12992060.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 138;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6775289/pexels-photo-6775289.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 130;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6747302/pexels-photo-6747302.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 143;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6647625/pexels-photo-6647625.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 117;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/6479595/pexels-photo-6479595.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 13;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/11203754/pexels-photo-11203754.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 144;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/9421382/pexels-photo-9421382.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 114;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/266621/pexels-photo-266621.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 127;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/4544816/pexels-photo-4544816.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 136;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/11126181/pexels-photo-11126181.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 134;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/15064039/pexels-photo-15064039.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 9;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/8100406/pexels-photo-8100406.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 142;
+UPDATE product SET img_url = 'https://images.pexels.com/photos/3641059/pexels-photo-3641059.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=680&w=580' WHERE id = 69;
+
+--- category image ---
+
+ALTER TABLE category ADD COLUMN img_url character varying(255);
+
+UPDATE category SET img_url = 'https://images.pexels.com/photos/11358597/pexels-photo-11358597.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1080&w=540' WHERE id = 3;
+UPDATE category SET img_url = 'https://images.pexels.com/photos/9637586/pexels-photo-9637586.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1080&w=540' WHERE id = 4;
+UPDATE category SET img_url = 'https://images.pexels.com/photos/2876035/pexels-photo-2876035.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1080&w=540' WHERE id = 2;
+UPDATE category SET img_url = 'https://images.pexels.com/photos/6143825/pexels-photo-6143825.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1080&w=540' WHERE id = 1;
+UPDATE category SET img_url = 'https://images.pexels.com/photos/10121693/pexels-photo-10121693.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1080&w=540' WHERE id = 5;
+
+--- collection image ---
+
+ALTER TABLE collection ADD COLUMN img_url character varying(255);
+
+UPDATE collection SET img_url = 'https://images.pexels.com/photos/4458521/pexels-photo-4458521.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=620&w=730' WHERE id = 3;
+UPDATE collection SET img_url = 'https://images.pexels.com/photos/13191613/pexels-photo-13191613.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=620&w=730' WHERE id = 1;
+UPDATE collection SET img_url = 'https://images.pexels.com/photos/5480690/pexels-photo-5480690.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=620&w=730' WHERE id = 2;

@@ -4,7 +4,6 @@ const resourceController = require('../controllers/resourceController');
 
 const router = express.Router();
 
-router.route('/home-startup').get(resourceController.getHomeStartup);
-router.route('/product-startup').get(resourceController.getProductStartup);
+router.route('/startup').get(resourceController.getStartupResource);
 
 module.exports = router;

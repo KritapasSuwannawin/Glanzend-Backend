@@ -19,7 +19,7 @@ exports.getSetup = (req, res) => {
 
 const pg = require('../postgres/postgres');
 
-exports.getHomeStartup = (req, res) => {
+exports.getStartupResource = (req, res) => {
   const categoryPromise = new Promise((resolve, reject) => {
     pg.query('SELECT * FROM category ORDER BY id', (err, result) => {
       if (err) {
@@ -40,25 +40,6 @@ exports.getHomeStartup = (req, res) => {
     });
   });
 
-  Promise.all([categoryPromise, collectionPromise])
-    .then((dataArr) => {
-      res.json({
-        status: 'success',
-        data: {
-          categoryArr: dataArr[0],
-          collectionArr: dataArr[1],
-        },
-      });
-    })
-    .catch((err) => {
-      res.json({
-        status: 'error',
-        message: err.message,
-      });
-    });
-};
-
-exports.getProductStartup = (req, res) => {
   const colorPromise = new Promise((resolve, reject) => {
     pg.query('SELECT * FROM color ORDER BY id', (err, result) => {
       if (err) {
@@ -79,13 +60,15 @@ exports.getProductStartup = (req, res) => {
     });
   });
 
-  Promise.all([colorPromise, sizePromise])
+  Promise.all([categoryPromise, collectionPromise, colorPromise, sizePromise])
     .then((dataArr) => {
       res.json({
         status: 'success',
         data: {
-          colorArr: dataArr[0],
-          sizeArr: dataArr[1],
+          categoryArr: dataArr[0],
+          collectionArr: dataArr[1],
+          colorArr: dataArr[2],
+          sizeArr: dataArr[3],
         },
       });
     })

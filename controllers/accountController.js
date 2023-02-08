@@ -233,7 +233,7 @@ exports.getLineItem = (req, res) => {
 
   pg.query(
     `
-  SELECT li.*, p.name product_name, p.collection_id, p.price, p.is_in_stock, s.name size_name, c.name color_name FROM line_item li
+  SELECT li.*, p.name product_name, p.collection_id, p.price, p.is_in_stock, p.img_url, s.name size_name, c.name color_name FROM line_item li
   INNER JOIN product p ON li.product_id = p.id
   INNER JOIN size s ON li.size_id = s.id
   INNER JOIN color c ON li.color_id = c.id
