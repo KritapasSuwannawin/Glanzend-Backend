@@ -17,6 +17,8 @@ exports.getSetup = (req, res) => {
 
 */
 
+const jwt = require('jsonwebtoken');
+
 const pg = require('../postgres/postgres');
 
 exports.getStartupResource = (req, res) => {
@@ -60,7 +62,20 @@ exports.getStartupResource = (req, res) => {
     });
   });
 
-  Promise.all([categoryPromise, collectionPromise, colorPromise, sizePromise])
+  const userIdPromise = new Promise((resolve, reject) => {
+    if (req.cookies && req.cookies.jwt) {
+      try {
+        const { userId } = jwt.verify(req.cookies.jwt, process.env.JWT_SECRET);
+        resolve(userId);
+      } catch (err) {
+        resolve();
+      }
+    } else {
+      resolve();
+    }
+  });
+
+  Promise.all([categoryPromise, collectionPromise, colorPromise, sizePromise, userIdPromise])
     .then((dataArr) => {
       res.json({
         status: 'success',
@@ -69,6 +84,7 @@ exports.getStartupResource = (req, res) => {
           collectionArr: dataArr[1],
           colorArr: dataArr[2],
           sizeArr: dataArr[3],
+          userId: dataArr[4],
         },
       });
     })

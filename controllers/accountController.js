@@ -17,8 +17,24 @@ exports.getSetup = (req, res) => {
 
 */
 
-const pg = require('../postgres/postgres');
 const cryptoJS = require('crypto-js');
+const jwt = require('jsonwebtoken');
+
+const pg = require('../postgres/postgres');
+
+const createSendToken = (userId, req, res) => {
+  const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
+  });
+
+  const cookieOptions = {
+    expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
+    httpOnly: true,
+    secure: req.secure,
+  };
+
+  res.cookie('jwt', token, cookieOptions);
+};
 
 exports.getAccount = (req, res) => {
   const { id } = req.query;
@@ -79,6 +95,8 @@ exports.registerAccount = (req, res) => {
           message: 'This email was already used',
         });
       } else {
+        createSendToken(returnValue, req, res);
+
         res.json({
           status: 'success',
           data: {
@@ -114,6 +132,8 @@ exports.loginAccount = (req, res) => {
           message: 'Invalid password',
         });
       } else {
+        createSendToken(returnValue, req, res);
+
         res.json({
           status: 'success',
           data: {
@@ -123,6 +143,14 @@ exports.loginAccount = (req, res) => {
       }
     }
   });
+};
+
+exports.logoutAccount = (req, res) => {
+  res.cookie('jwt', '', {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true,
+  });
+  res.json({ status: 'success' });
 };
 
 exports.getColumn = (req, res) => {

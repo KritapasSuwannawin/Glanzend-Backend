@@ -7,6 +7,7 @@ const router = express.Router();
 router.route('/').get(accountController.getAccount).put(accountController.updateAccount);
 router.route('/register').post(accountController.registerAccount);
 router.route('/login').post(accountController.loginAccount);
+router.route('/logout').get(accountController.logoutAccount);
 router.route('/column').get(accountController.getColumn).put(accountController.updateColumn);
 router.route('/sale-order').get(accountController.getSaleOrder).post(accountController.createSaleOrder);
 router
